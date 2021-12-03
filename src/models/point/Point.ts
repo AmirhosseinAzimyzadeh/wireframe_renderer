@@ -11,6 +11,10 @@ class Point {
     this.z = z;
   }
   
+  isEqual(point: Point) {
+    return (this.x === point.x && this.y === point.y && this.z === point.z)
+  }
+
   /** point as an array [x, y, z] */
   asArray(): [number, number, number] {
     return [this.x, this.y, this.z];
