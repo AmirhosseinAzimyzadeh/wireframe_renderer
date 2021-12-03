@@ -23,7 +23,7 @@ class Vector {
     this._size = null;
   }
 
-  get x() { return this._x; };
+  get x() { return this._x; }
   set x(x: number) {
     this._x = x;
     this.resetComputationalProps();
