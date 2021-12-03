@@ -14,11 +14,10 @@ Deno.test('Vector Test "Equality" #2', () => {
   assertEquals(firstV.isEqual(new Vector(0,12,3)), false);
 });
 
-Deno.test('Vector Test "size and Unit"', () => {
+Deno.test('Vector Test "Size and Unit"', () => {
   const vector = new Vector(0, 3, 4);
   assertEquals(5, vector.size);
   const unitVector = vector.unit;
-  console.log({ unitVector });
   assertEquals(unitVector.isEqual(
     new Vector((0 / 5), (3 / 5), (4 / 5)),
   ), true);
