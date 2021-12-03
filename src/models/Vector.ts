@@ -15,10 +15,10 @@ class Vector {
     this._x = x;
     this._y = y;
     this._z = z;
-    this.resetComputationls();
+    this.resetComputationalProps();
   }
 
-  private resetComputationls() {
+  private resetComputationalProps() {
     this._unit = null;
     this._size = null;
   }
@@ -26,19 +26,19 @@ class Vector {
   get x() { return this._x; };
   set x(x: number) {
     this._x = x;
-    this.resetComputationls();
+    this.resetComputationalProps();
   }
 
   get y() { return this._y; }
   set y(y: number) {
     this._y = y;
-    this.resetComputationls();
+    this.resetComputationalProps();
   }
 
   get z() { return this._z; }
   set z(z: number) {
     this._z = z;
-    this.resetComputationls();
+    this.resetComputationalProps();
   }
 
   get size(): number {
