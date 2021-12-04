@@ -70,6 +70,14 @@ class Vector {
   isEqual(vec: Vector): boolean {
     return (this.x === vec.x && this.y === vec.y && this.z === vec.z)
   }
+
+  copy(): Vector {
+    return new Vector(
+      this._x,
+      this._y,
+      this._z,
+    );
+  } 
 }
 
 
