@@ -13,4 +13,14 @@ Deno.test('Point "asArray"', () => {
   const p1 = new Point(12, 3, 4);
   
   assertEquals(p1.asArray(), [12, 3, 4])
-})
+});
+
+Deno.test('Point "change callback"', () => {
+  const p = new Point(0, 0, 0);
+  let hasChanged = false;
+  const changeCB = () => { hasChanged = true; }
+  p.setChangeCallback(changeCB);
+
+  p.x = 12;
+  assertEquals(hasChanged, true);
+});
