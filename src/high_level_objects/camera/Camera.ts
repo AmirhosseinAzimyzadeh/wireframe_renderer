@@ -1,6 +1,18 @@
 import Plane from '../../models/plane/Plane.ts';
 import Point from '../../models/point/Point.ts';
-
+/**
+ * Represent an imaginary camera in 3D space for rendering a scene
+ * Note that "viewPoint" is always behind the plane
+ * (opposite direction of normal vector)
+ * 2D schema => 
+ * 
+ *                    |
+ *      (*) ----d---- |    [scene]
+ *  [view point]      | 
+ *              [camera plane]
+ * 
+ * 
+ */
 class Camera {
 
   private height: number;
