@@ -15,8 +15,8 @@ import Point from '../../models/point/Point.ts';
  */
 class Camera {
 
-  private height: number;
-  private width: number;
+  private _height: number;
+  private _width: number;
   private cameraPlane: Plane;
   private viewPointDistanceFromPlane: number;
   private _viewPoint: Point;
@@ -27,8 +27,8 @@ class Camera {
     plane: Plane,
     viewPointDistance?: number
   ) {
-    this.height = h;
-    this.width = w;
+    this._height = h;
+    this._width = w;
     this.cameraPlane = plane;
 
     if (viewPointDistance === undefined) {
@@ -54,6 +54,14 @@ class Camera {
 
   get plane(): Plane {
     return this.cameraPlane;
+  }
+
+  get width() {
+    return this._width;
+  }
+
+  get height() {
+    return this._height;
   }
 }
 
