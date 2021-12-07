@@ -1,7 +1,7 @@
-import Point from "../models/point/Point.ts";
-import Vector from "../models/vector/Vector.ts";
-import Ray from "../models/ray/Ray.ts";
-import Plane from "../models/plane/Plane.ts";
+import Point from "../../models/point/Point.ts";
+import Vector from "../../models/vector/Vector.ts";
+import Ray from "../../models/ray/Ray.ts";
+import Plane from "../../models/plane/Plane.ts";
 
 function subtractPoints(p1: Point, p2: Point): Vector {
   return new Vector(

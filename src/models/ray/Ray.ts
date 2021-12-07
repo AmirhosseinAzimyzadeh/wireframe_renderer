@@ -1,4 +1,4 @@
-import Geometry from "../../utils/Geometry.ts";
+import Geometry from "../../utils/geometry/Geometry.ts";
 import Point from '../point/Point.ts';
 import Vector from '../vector/Vector.ts';
 

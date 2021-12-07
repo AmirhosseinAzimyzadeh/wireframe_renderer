@@ -1,8 +1,8 @@
 import { assertEquals } from 'https://deno.land/std@0.116.0/testing/asserts.ts';
-import Plane from "../models/plane/Plane.ts";
-import Point from "../models/point/Point.ts";
-import Ray from "../models/ray/Ray.ts";
-import Vector from "../models/vector/Vector.ts";
+import Plane from "../../models/plane/Plane.ts";
+import Point from "../../models/point/Point.ts";
+import Ray from "../../models/ray/Ray.ts";
+import Vector from "../../models/vector/Vector.ts";
 import Geometry from "./Geometry.ts";
 
 Deno.test('Geometry "subtract points"', () => {
