@@ -19,7 +19,7 @@ function render(
   triangles: Triangle[],
 ): Canvas | null {
 
-  
+
   return null;
 }
 
