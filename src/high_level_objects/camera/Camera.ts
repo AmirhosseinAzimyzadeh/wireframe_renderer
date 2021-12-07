@@ -51,6 +51,10 @@ class Camera {
   get viewPoint(): Point {
     return this._viewPoint;
   }
+
+  get plane(): Plane {
+    return this.cameraPlane;
+  }
 }
 
 export default Camera;
