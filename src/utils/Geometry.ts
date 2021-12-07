@@ -1,5 +1,7 @@
 import Point from "../models/point/Point.ts";
 import Vector from "../models/vector/Vector.ts";
+import Ray from "../models/ray/Ray.ts";
+import Plane from "../models/plane/Plane.ts";
 
 function subtractPoints(p1: Point, p2: Point): Vector {
   return new Vector(
@@ -23,10 +25,30 @@ function crossProduct(v: Vector, w: Vector): Vector {
   );
 }
 
+/**
+ * returns the input ray if it's in the input plane
+ */
+function rayPlaneIntersection(plane: Plane, ray: Ray): Point | Ray {
+  if (innerProduct(plane.normal, ray.vector) === 0) { // ray is in the plane
+    return ray;
+  }
+
+  const rayToPoint = subtractPoints(
+    plane.point,
+    ray.samplePoint,
+  );
+
+  const t = innerProduct(rayToPoint, plane.normal)
+    / innerProduct(ray.vector, plane.normal);
+
+  return ray.getPointAt(t);
+}
+
 const Geometry = {
   subtractPoints,
   innerProduct,
   crossProduct,
+  rayPlaneIntersection,
 }
 
 export default Geometry;
