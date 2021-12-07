@@ -1,5 +1,7 @@
 import { assertEquals } from 'https://deno.land/std@0.116.0/testing/asserts.ts';
+import Plane from "../models/plane/Plane.ts";
 import Point from "../models/point/Point.ts";
+import Ray from "../models/ray/Ray.ts";
 import Vector from "../models/vector/Vector.ts";
 import Geometry from "./Geometry.ts";
 
@@ -28,4 +30,28 @@ Deno.test('Geometry "cross product"', () => {
   assertEquals(Geometry.crossProduct(vec1, vec2).isEqual(
     new Vector(-319, -62, 15)
   ), true);
+});
+
+Deno.test('Geometry "ray plane intersection"', () => {
+  const plane = new Plane(
+    new Point(0, 0, 0),
+    new Vector(0, 1, 0),
+  );
+
+  const ray = Ray.createFromPoints(
+    new Point(1, -10, 0),
+    new Point(1, 10, 0),
+  );
+
+  const intersect: Point | Ray = Geometry.rayPlaneIntersection(
+    plane,
+    ray,
+  );
+
+  if (intersect instanceof Point) {
+    assertEquals(intersect.isEqual(new Point(1, 0, 0)), true);
+  } else {
+    throw new Error("Test failed");
+  }
+
 });
