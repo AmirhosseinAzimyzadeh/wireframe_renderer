@@ -44,11 +44,33 @@ function rayPlaneIntersection(plane: Plane, ray: Ray): Point | Ray {
   return ray.getPointAt(t);
 }
 
+/** rotate around z axios */
+function rotateZ(vector: Vector, amount: number): Vector {
+  return new Vector(
+    (Math.cos(amount) * vector.x) - (Math.sin(amount) * vector.y),
+    (Math.sin(amount) * vector.x) + (Math.cos(amount) * vector.y),
+    vector.z,
+  );
+}
+
+function rotate90Degree(v: Vector): Vector {
+  // check if it's parallel with z-axios
+  const zAxios = new Vector(0,0,1);
+  const crossP = crossProduct(v, zAxios);
+  if (crossP.size === 0) {
+    return new Vector(1, 0, 0);
+  }
+
+  return rotateZ(v, (Math.PI / 2));
+}
+
 const Geometry = {
   subtractPoints,
   innerProduct,
   crossProduct,
   rayPlaneIntersection,
+  rotateZ,
+  rotate90Degree,
 }
 
 export default Geometry;
