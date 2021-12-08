@@ -27,9 +27,9 @@ function render(
   const new2DOrigin = camera.plane.point;
 
   const paths: Path[] = projectedTriangles.map((t) => ([
-    find2DCoordinate(new2DOrigin, t.points[0]),
-    find2DCoordinate(new2DOrigin, t.points[1]),
-    find2DCoordinate(new2DOrigin, t.points[2]),
+    find2DCoordinate(new2DOrigin, t.points[0], camera.plane),
+    find2DCoordinate(new2DOrigin, t.points[1], camera.plane),
+    find2DCoordinate(new2DOrigin, t.points[2], camera.plane),
   ]));
 
   return {
