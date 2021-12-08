@@ -2,6 +2,7 @@ import Point from "../../models/point/Point.ts";
 import Vector from "../../models/vector/Vector.ts";
 import { TwoDPoint } from "./render.ts";
 import Geometry from "../geometry/Geometry.ts";
+import Plane from "../../models/plane/Plane.ts";
 
 /**
  * Before using this function make sure that all point are
@@ -9,10 +10,11 @@ import Geometry from "../geometry/Geometry.ts";
  */
 export default function find2DCoordinate(
   origin: Point,
-  targetPoint: Point
+  targetPoint: Point,
+  cameraPlane: Plane,
 ): TwoDPoint {
   // initiate necessary vectors
-  const xVector = new Vector(1, 0, 0);
+  const xVector = Geometry.rotate90Degree(cameraPlane.normal);
   const radianVector = Geometry.subtractPoints(origin, targetPoint);
   const distanceFromOrigin = radianVector.size;
   
@@ -22,8 +24,11 @@ export default function find2DCoordinate(
   const sin = Geometry.crossProduct(xVector, radianVector).size
     / ((xVector.size) * (radianVector.size));
 
+  const x = distanceFromOrigin * cos;
+  const y = distanceFromOrigin * sin;
+
   return {
-    x: distanceFromOrigin * cos,
-    y: distanceFromOrigin * sin,
+    x: isNaN(x) ? 0 : x ,
+    y: isNaN(y) ? 0 : y,
   };
 }
