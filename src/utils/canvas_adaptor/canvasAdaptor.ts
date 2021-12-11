@@ -2,7 +2,7 @@ import { Canvas } from "../renderer/render.ts";
 import { createCanvas } from "https://deno.land/x/canvas/mod.ts";
 
 
-export default async function renderOnCanvas(renderedCanvas: Canvas) {
+export default async function renderOnCanvas(renderedCanvas: Canvas, name = "imag.png") {
   const { width, height, paths } = renderedCanvas;
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
@@ -27,5 +27,5 @@ export default async function renderOnCanvas(renderedCanvas: Canvas) {
     });
     ctx.stroke();
   });
-  await Deno.writeFile("image.png", canvas.toBuffer());
+  await Deno.writeFile(name, canvas.toBuffer());
 }
