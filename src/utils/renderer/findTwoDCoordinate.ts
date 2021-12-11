@@ -14,7 +14,8 @@ export default function find2DCoordinate(
   cameraPlane: Plane,
 ): TwoDPoint {
   // initiate necessary vectors
-  const xVector = Geometry.rotate90Degree(cameraPlane.normal);
+  // const xVector = Geometry.rotate90Degree(cameraPlane.normal);
+  const xVector = new Vector(0, 0, 10);
   const radianVector = Geometry.subtractPoints(origin, targetPoint);
   const distanceFromOrigin = radianVector.size;
   
