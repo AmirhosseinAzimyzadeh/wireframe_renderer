@@ -53,6 +53,22 @@ function rotateZ(vector: Vector, amount: number): Vector {
   );
 }
 
+function rotateZPoint(vector: Point, amount: number): Point {
+  return new Point(
+    (Math.cos(amount) * vector.x) - (Math.sin(amount) * vector.y),
+    (Math.sin(amount) * vector.x) + (Math.cos(amount) * vector.y),
+    vector.z,
+  );
+}
+
+function rotateYPoint(vector: Point, amount: number): Point {
+  return new Point(
+    (Math.cos(amount) * vector.x) + (Math.sin(amount) * vector.z),
+    vector.y,
+    (Math.sin(amount) * vector.y * (-1)) + (Math.cos(amount) * vector.z),
+  );
+}
+
 function rotate90Degree(v: Vector): Vector {
   // check if it's parallel with z-axios
   const zAxios = new Vector(0,0,1);
@@ -71,6 +87,8 @@ const Geometry = {
   rayPlaneIntersection,
   rotateZ,
   rotate90Degree,
+  rotateZPoint,
+  rotateYPoint,
 }
 
 export default Geometry;
