@@ -42,14 +42,14 @@ class Camera {
   private findViewPoint(): Point {
     const d = this.viewPointDistanceFromPlane;
     return new Point(
-      ((-1 * d * this.cameraPlane.normal.x) + this.cameraPlane.point.x),
-      ((-1 * d * this.cameraPlane.normal.y) + this.cameraPlane.point.y),
-      ((-1 * d * this.cameraPlane.normal.z) + this.cameraPlane.point.z),
+      ((-1 * d * this.cameraPlane.normal.unit.x) + this.cameraPlane.point.x),
+      ((-1 * d * this.cameraPlane.normal.unit.y) + this.cameraPlane.point.y),
+      ((-1 * d * this.cameraPlane.normal.unit.z) + this.cameraPlane.point.z),
     );
   }
 
   get viewPoint(): Point {
-    return this._viewPoint;
+    return this._viewPoint.copy();
   }
 
   get plane(): Plane {

@@ -18,7 +18,7 @@ export default async function renderOnCanvas(renderedCanvas: Canvas, name = "ima
   // const yOffset = 0;
 
   ctx.strokeStyle = 'white';
-  ctx.lineWidth = 10;
+  ctx.lineWidth = 4;
   paths.forEach((triangle) => {
     ctx.moveTo((triangle[0].x) + xOffset,(triangle[0].y) + yOffset)
     triangle.forEach(({x, y}) => {

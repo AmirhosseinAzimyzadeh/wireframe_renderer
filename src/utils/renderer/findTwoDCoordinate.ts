@@ -5,7 +5,7 @@ import Geometry from "../geometry/Geometry.ts";
 import Plane from "../../models/plane/Plane.ts";
 
 /**
- * Before using this function make sure that all point are
+ * Before using this function make sure that all points are
  * in the same place
  */
 export default function find2DCoordinate(
@@ -14,8 +14,8 @@ export default function find2DCoordinate(
   cameraPlane: Plane,
 ): TwoDPoint {
   // initiate necessary vectors
-  // const xVector = Geometry.rotate90Degree(cameraPlane.normal);
-  const xVector = new Vector(0, 0, 10);
+  const xVector = Geometry.rotate90Degree(cameraPlane.normal);
+  // const xVector = new Vector(0, -1, 0);
   const radianVector = Geometry.subtractPoints(origin, targetPoint);
   const distanceFromOrigin = radianVector.size;
   
@@ -27,6 +27,16 @@ export default function find2DCoordinate(
 
   const x = distanceFromOrigin * cos;
   const y = distanceFromOrigin * sin;
+
+  if (isNaN(x) || isNaN(y))
+  console.log({
+    x: isNaN(x),
+    y: isNaN(y),
+  })
+
+  if (cameraPlane.isInPlane(targetPoint)) {
+    console.log(targetPoint);
+  }
 
   return {
     x: isNaN(x) ? 0 : x ,

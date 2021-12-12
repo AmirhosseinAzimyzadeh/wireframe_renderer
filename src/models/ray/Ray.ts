@@ -14,7 +14,7 @@ class Ray {
   public static createFromPoints(p1: Point, p2: Point): Ray {
     return new Ray(
       p1,
-      Geometry.subtractPoints(p1, p2),
+      Geometry.subtractPoints(p2, p1),
     )
   }
 
@@ -32,7 +32,7 @@ class Ray {
 
   getPointAt(t: number): Point {
     const p = this._samplePoint;
-    const d = this._vector;
+    const d = this._vector.unit;
     return new Point(
       (p.x + (t * d.x)),
       (p.y + (t * d.y)),

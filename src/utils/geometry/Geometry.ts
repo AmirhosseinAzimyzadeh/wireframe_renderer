@@ -41,6 +41,8 @@ function rayPlaneIntersection(plane: Plane, ray: Ray): Point | Ray {
   const t = innerProduct(rayToPoint, plane.normal)
     / innerProduct(ray.vector, plane.normal);
 
+  console.log({ t });  
+
   return ray.getPointAt(t);
 }
 
