@@ -18,13 +18,18 @@ export default async function renderOnCanvas(renderedCanvas: Canvas, name = "ima
   // const yOffset = 0;
 
   ctx.strokeStyle = 'white';
-  ctx.lineWidth = 4;
+  ctx.lineWidth = 2;
   paths.forEach((triangle) => {
     ctx.moveTo((triangle[0].x) + xOffset,(triangle[0].y) + yOffset)
-    triangle.forEach(({x, y}) => {
-      ctx.lineTo((x) + xOffset, (y) + yOffset);
-      ctx.moveTo((x) + xOffset, (y) + yOffset);
-    });
+
+    ctx.lineTo((triangle[1].x) + xOffset, (triangle[1].y) + yOffset);
+    ctx.moveTo((triangle[1].x) + xOffset, (triangle[1].y) + yOffset);
+
+    ctx.lineTo((triangle[2].x) + xOffset, (triangle[2].y) + yOffset);
+    ctx.moveTo((triangle[2].x) + xOffset, (triangle[2].y) + yOffset);
+
+    ctx.lineTo((triangle[0].x) + xOffset, (triangle[0].y) + yOffset);
+
     ctx.stroke();
   });
   await Deno.writeFile(name, canvas.toBuffer());
