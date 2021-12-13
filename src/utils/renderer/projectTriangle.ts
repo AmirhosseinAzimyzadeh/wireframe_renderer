@@ -15,8 +15,6 @@ function projectTriangle(
     );
     const intersection = Geometry.rayPlaneIntersection(camera.plane, ray);
     if (intersection instanceof Ray) return currentPoint;
-      console.log("HERE");
-      console.log(intersection);
     return intersection;
   });
 
