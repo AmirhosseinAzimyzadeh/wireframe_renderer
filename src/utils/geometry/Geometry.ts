@@ -41,8 +41,6 @@ function rayPlaneIntersection(plane: Plane, ray: Ray): Point | Ray {
   const t = innerProduct(rayToPoint, plane.normal)
     / innerProduct(ray.vector, plane.normal);
 
-  console.log({ t });  
-
   return ray.getPointAt(t);
 }
 
@@ -82,6 +80,12 @@ function rotate90Degree(v: Vector): Vector {
   return rotateZ(v, (Math.PI / 2));
 }
 
+function getAngle(v1: Vector, v2: Vector): number {
+  const dot = innerProduct(v1, v2);
+  const cos = dot / (v1.size * v2.size);
+  return Math.acos(cos);
+}
+
 const Geometry = {
   subtractPoints,
   innerProduct,
@@ -91,6 +95,7 @@ const Geometry = {
   rotate90Degree,
   rotateZPoint,
   rotateYPoint,
+  getAngle,
 }
 
 export default Geometry;
