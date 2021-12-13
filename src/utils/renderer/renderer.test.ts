@@ -59,34 +59,33 @@ Deno.test("Renderer 2", async () => {
 
 
 
-  const plane = new Plane(new Point(200, 0, 0), new Vector(-50, 0, 0));
-  const camera = new Camera(1500, 1500, plane, 5);
+  const plane = new Plane(new Point(110, 0, 0), new Vector(-50, 0, 0));
+  const camera = new Camera(500, 500, plane, 200);
 
   console.log(camera.viewPoint);
 
-  
-  // data.paths.forEach((p) => {
-  //   p.forEach((t) => {
-  //     console.log(`(${t.x}, ${t.y})`)
-  //   })
-  // });
-
   const data = render(camera, triangles);
-  await renderOnCanvas(data);
-  // for (let i=0.01 ; i< 0.5 ;i+=0.01 ) {
-  //   // rotate
-  //   const data = render(camera, triangles);
-  //   await renderOnCanvas(data, `${i}_image.png`);
-  //   triangles.forEach((t) => {
-  //   t.points.forEach((p) => {
-  //     const rotatedPoint = Geometry.rotateZPoint(p, i);
-  //     // rotatedPoint = Geometry.rotateYPoint(p, Math.PI / 3);
-  //     p.x = rotatedPoint.x;
-  //     p.y = rotatedPoint.y;
-  //     p.z = rotatedPoint.z;
-  //   }); 
-  // })
-  // }
+  data.paths.forEach((p) => {
+    p.forEach((t) => {
+      console.log(`(${t.x}, ${t.y})`)
+    })
+  });
+
+  // await renderOnCanvas(data);
+  for (let i=0.01 ; i< 0.5 ;i+=0.01 ) {
+    // rotate
+    const data = render(camera, triangles);
+    await renderOnCanvas(data, `${i}_image.png`);
+    triangles.forEach((t) => {
+    t.points.forEach((p) => {
+      let rotatedPoint = Geometry.rotateZPoint(p, i);
+      // rotatedPoint = Geometry.rotateYPoint(p, Math.PI / 3);
+      p.x = rotatedPoint.x;
+      p.y = rotatedPoint.y;
+      p.z = rotatedPoint.z;
+    }); 
+  })
+  }
 
 
 });
