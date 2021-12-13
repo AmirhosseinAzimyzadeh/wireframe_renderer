@@ -23,7 +23,7 @@ function render(
 
   const projectedTriangles: Triangle[] = triangles
     .map((t) => projectTriangle(camera, t));
-  
+
   const new2DOrigin = camera.plane.point;
 
   const paths: Path[] = projectedTriangles.map((t) => ([
