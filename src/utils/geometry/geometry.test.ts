@@ -47,6 +47,8 @@ Deno.test('Geometry "ray plane intersection"', () => {
     plane,
     ray,
   );
+  
+  console.log(intersect);
 
   if (intersect instanceof Point) {
     assertEquals(intersect.isEqual(new Point(1, 0, 0)), true);
