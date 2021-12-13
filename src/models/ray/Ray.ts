@@ -32,7 +32,7 @@ class Ray {
 
   getPointAt(t: number): Point {
     const p = this._samplePoint;
-    const d = this._vector.unit;
+    const d = this._vector;
     return new Point(
       (p.x + (t * d.x)),
       (p.y + (t * d.y)),
