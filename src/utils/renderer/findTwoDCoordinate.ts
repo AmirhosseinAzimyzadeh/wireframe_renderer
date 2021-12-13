@@ -14,8 +14,9 @@ export default function find2DCoordinate(
   cameraPlane: Plane,
 ): TwoDPoint {
   // initiate necessary vectors
-  const xVector = Geometry.rotate90Degree(cameraPlane.normal);
-  // const xVector = new Vector(0, -1, 0);
+  // const xVector = Geometry.rotate90Degree(cameraPlane.normal);
+  const xVector = new Vector(0, -1, 0);
+  const yVector = new Vector(0, 0, 1);
   const radianVector = Geometry.subtractPoints(origin, targetPoint);
   const distanceFromOrigin = radianVector.size;
   
@@ -25,21 +26,27 @@ export default function find2DCoordinate(
   const sin = Geometry.crossProduct(xVector, radianVector).size
     / ((xVector.size) * (radianVector.size));
 
-  const x = distanceFromOrigin * cos;
-  const y = distanceFromOrigin * sin;
+  let x = distanceFromOrigin * cos * (targetPoint.z / targetPoint.z);
+  let y = distanceFromOrigin * sin * (targetPoint.y / targetPoint.y);
 
-  if (isNaN(x) || isNaN(y))
-  console.log({
-    x: isNaN(x),
-    y: isNaN(y),
-  })
+  const xAngle = Geometry.getAngle(xVector, radianVector);
 
-  if (cameraPlane.isInPlane(targetPoint)) {
-    console.log(targetPoint);
-  }
+  // if (xAngle > Math.PI / 2) {
+  //   x = -1 * x;
+  // }
+
+  // const yAngle = Geometry.getAngle(yVector, radianVector);
+  // if (yAngle > Math.PI / 2) {
+  //   y = -1 * y;
+  // }
+
+  // return {
+  //   x: isNaN(x) ? 0 : x ,
+  //   y: isNaN(y) ? 0 : y,
+  // };
 
   return {
-    x: isNaN(x) ? 0 : x ,
-    y: isNaN(y) ? 0 : y,
+    x: targetPoint.z,
+    y: targetPoint.y,
   };
 }
